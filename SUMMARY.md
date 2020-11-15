@@ -9,7 +9,9 @@
         * [1.1、Java学习](myStudy/Language/JavaStudy.md)
         * [1.2、Go学习](myStudy/Language/GolangStudy.md)
         * [1.3、Python学习](myStudy/Language/PythonStudy.md)
-    * [2、涂鸦内部平台使用](TuyaPlatform/README.md)
-    * [3、涂鸦会议培训记录](TuyaMeeting/README.md)
-    * [4、技术栈](TechStack/README.md)
+        * [2、涂鸦内部平台使用](TuyaPlatform/README.md)
+        * [3、涂鸦会议培训记录](TuyaMeeting/README.md)
+        * [4、技术栈](TechStack/README.md)
+* [三、高效](effective/README.md)
+    * [1、ssh](effective/ssh.md)
 
