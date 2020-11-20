@@ -30,3 +30,22 @@
     }
 
 ```
+
+## 多线程学习随记
+
+### ThreadLocal
+
+- ThreadLocal原理：将数据存放在currentThread的ThreadLocalMap【Thread的一个内部类】对象中
+  - 执行ThreadLocal.set方法：获取当前线程对象，获取当前线程的ThreadLocalMap对象，首次会使用当前线程和首个值创建该Map对象new ThreadLocalMap(this, firstValue)【table[i] = new Entry(firstKey,firstValue)】，ThreadLocalMap底层数据结构是一个Entry数组（同，将数据放在对应hash值的数组索引位置）
+- ThreadLocal设置初始值：重写initValue()方法【默认返回null】
+- ThreadLocal不能实现值继承：子线程不能获取父线程的ThreadLocal的值
+- 使用InheritableThreadLocal实现值继承
+  - 不再通过ThreadLocal.ThreadLocalMap threadLocals中存放数据，而是向ThreadLocal.ThreadLocal-Map inheritableThreadLocals中存放，子线程主动地引用父线程中的inheritableThreadLocals对象的值从而实现继承【将值进行拷贝（浅拷贝）并创建新的ThreadLocalMap对象，因此父线程的TreadLocalMap只是提供了一个初始化的作用】。
+  - 由于采用的是浅拷贝，因此对于引用的可变对象，子线程可以感应到引用对象属性值的变化
+  - 通过重写childValue方法实现堆积成的值的加工protected Object childValue(Object parentValue)：这里完全可以自定义实现深拷贝
+
+### Lock对象（JDK 1.5）
+
+> Java语言中采用的索为可重入锁
+
+- ReentrantLock
